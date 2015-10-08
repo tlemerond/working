@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Download files from a given URL recursively
+# into current directory
+# Enter url to download files from
+# url=
+
+wget -e robots=off -r --no-parent $url
