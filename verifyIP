@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Verify the format of a given IP address
+# 2015-08-31
+
+for i in $(echo $IPADDR|awk -F\. '{print $1,$2,$3,$4}');do
+  if [ -z "$i" ];then
+     echo "Invalid IP address"
+     exit 1
+  elif [ $(echo x$i | tr -d '[0-9]') != "x" ];then
+     echo "Invalid IP address"
+     exit 2
+  elif [ $i -lt 0 -o $i -gt 255 ];then
+     echo "Invalid IP address"
+     exit 3
+  fi
+done
+echo "IP Address is valid"
+
+     
