@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# CentOS 7
+# Find out if a given port at a give IP address is open
+# 2015-08-31
+
+:</dev/tcp/IPADDR/PORTNUM &>/dev/null 2>&1 && echo "OPEN" || echo "CLOSED"
