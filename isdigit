@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# is value VAL a digit
+# 2015-09-01 
+#
+
+[[ echo x$VAL | tr -d '[0-9]') != "x" ]] && return 1 || return 0
