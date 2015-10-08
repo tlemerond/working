@@ -3,16 +3,21 @@
 # Verify the format of a given IP address
 # 2015-08-31
 
+octet=0
 for i in $(echo $IPADDR|awk -F\. '{print $1,$2,$3,$4}');do
+  octet=$((octet + 1))
   if [ -z "$i" ];then
      echo "Invalid IP address"
      exit 1
   elif [ $(echo x$i | tr -d '[0-9]') != "x" ];then
      echo "Invalid IP address"
      exit 2
-  elif [ $i -lt 0 -o $i -gt 255 ];then
+  elif [ $octet == 1 ] && [ $i == 0 ];then
      echo "Invalid IP address"
      exit 3
+  elif [ $i -lt 0 -o $i -gt 255 ];then
+     echo "Invalid IP address"
+     exit 4
   fi
 done
 echo "IP Address is valid"
